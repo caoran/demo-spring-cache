@@ -29,10 +29,11 @@ public class QueryController {
 
     @GetMapping("/caches")
     public ResponseEntity<?> getCache() {
-        Map<String, ConcurrentMap> cacheMap = cacheManager.getCacheNames().stream().collect(Collectors.toMap(Function.identity(), name -> {
-            Cache cache = (Cache) cacheManager.getCache(name).getNativeCache();
-            return cache.asMap();
-        }));
+        Map<String, ConcurrentMap> cacheMap = cacheManager.getCacheNames().stream()
+                .collect(Collectors.toMap(Function.identity(), name -> {
+                    Cache cache = (Cache) cacheManager.getCache(name).getNativeCache();
+                    return cache.asMap();
+                }));
         return ResponseEntity.ok(cacheMap);
     }
 }

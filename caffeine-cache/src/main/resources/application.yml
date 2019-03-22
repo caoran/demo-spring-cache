@@ -1,6 +1,5 @@
 spring:
   cache:
-    cache-names: query-result, demo
     caffeine:
       spec: maximumSize=500, expireAfterAccess=30s
 logging:
